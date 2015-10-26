@@ -70,3 +70,12 @@
 
  Jonathan Gazeley <jonathan.gazeley@bristol.ac.uk>:
   * SELinux permissions fix
+
+2015-10-26 Jonathan Gazeley <jonathan.gazeley@bristol.ac.uk> - 1.8.0
+===========================================================
+
+ Jonathan Gazeley <jonathan.gazeley@bristol.ac.uk>:
+  * SELinux improvements (thanks @paulseward)
+  * Have Ubuntu use the AlienVault repo & various Ubuntu improvements (thanks @Chaordix)
+  * Improvements to email templates (thanks @kmcfate)
+
