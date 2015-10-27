@@ -67,7 +67,7 @@ class ossec::common {
         gpgcheck => 1,
         gpgkey   => 'http://ossec.wazuh.com/key/RPM-GPG-KEY-OSSEC',
         enabled  => true,
-        require  => Class['epel'],
+        require  => [ Class['epel'], Yumrepo['ossec'] ],
       }
 
       # Set up EPEL repo
