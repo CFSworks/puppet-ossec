@@ -53,24 +53,17 @@ class ossec::common {
       }
     }
     'Redhat' : {
-      # Set up OSSEC rpm gpg key
-      file { 'RPM-GPG-KEY.ossec.txt':
-        path   => '/etc/pki/rpm-gpg/RPM-GPG-KEY.ossec.txt',
-        source => 'puppet:///modules/ossec/RPM-GPG-KEY.ossec.txt',
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0664',
-      }
-
       # Set up OSSEC repo
       yumrepo { 'ossec':
-        descr      => 'CentOS / Red Hat Enterprise Linux $releasever - ossec.net',
-        enabled    => true,
-        gpgkey     => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY.ossec.txt',
-        mirrorlist => 'http://updates.atomicorp.com/channels/mirrorlist/ossec/centos-$releasever-$basearch',
-        priority   => 1,
-        protect    => false,
-        require    => [ File['RPM-GPG-KEY.ossec.txt'], Class['epel'] ]
+        ensure => absent,
+      }
+      yumrepo { 'wazuh':
+        descr    => 'WAZUH OSSEC Repository - www.wazuh.com',
+        baseurl  => 'http://ossec.wazuh.com/el/$releasever/$basearch',
+        gpgcheck => 1,
+        gpgkey   => 'http://ossec.wazuh.com/key/RPM-GPG-KEY-OSSEC',
+        enabled  => true,
+        require  => Class['epel'],
       }
 
       # Set up EPEL repo

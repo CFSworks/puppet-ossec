@@ -109,7 +109,7 @@ About active-response mechanism, check the documentation (and extends the functi
 
 ## Limitations
 
-On RedHat-like systems, this module depends on the [Atomic repo](https://www6.atomicorp.com/channels/atomic/)
+On RedHat-like systems, this module depends on the [Wazuh repo](http://documentation.wazuh.com/en/latest/rpm.html)
 to provide the OSSEC packages, and on the [EPEL repo](https://fedoraproject.org/wiki/EPEL) to provide
 a dependency, `inotify-tools`.
 
