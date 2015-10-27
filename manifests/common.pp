@@ -59,6 +59,7 @@ class ossec::common {
       }
       package { 'ossec*art':
         ensure => absent,
+        before => Yumrepo['wazuh'],
       }
 
       yumrepo { 'wazuh':
