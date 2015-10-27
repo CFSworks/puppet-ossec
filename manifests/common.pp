@@ -70,7 +70,7 @@ class ossec::common {
       include epel
 
       $hidsagentservice  = 'ossec-hids'
-      $hidsagentpackage  = 'ossec-hids-client'
+      $hidsagentpackage  = 'ossec-hids-agent'
       $hidsserverservice = 'ossec-hids'
       $hidsserverpackage = 'ossec-hids-server'
       $servicehasstatus  = true
