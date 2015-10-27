@@ -12,14 +12,14 @@ class ossec::common {
           $hidsserverpackage = 'ossec-hids'
 
           apt::source { 'alienvault-ossec':
-            ensure		=> present,
-            comment		=> 'This is the AlienVault Ubuntu repository for Ossec',
-            location	=> 'http://ossec.alienvault.com/repos/apt/ubuntu',
-            release		=> $::lsbdistcodename,
-            repos		=> 'main',
-            key		=> {
-              id		=> '9FE55537D1713CA519DFB85114B9C8DB9A1B1C65',
-              source		=> 'http://ossec.alienvault.com/repos/apt/conf/ossec-key.gpg.key',
+            ensure   => present,
+            comment  => 'This is the AlienVault Ubuntu repository for Ossec',
+            location => 'http://ossec.alienvault.com/repos/apt/ubuntu',
+            release  => $::lsbdistcodename,
+            repos    => 'main',
+            key      => {
+              id     => '9FE55537D1713CA519DFB85114B9C8DB9A1B1C65',
+              source => 'http://ossec.alienvault.com/repos/apt/conf/ossec-key.gpg.key',
             },
           }
           ~>

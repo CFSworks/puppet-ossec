@@ -2,7 +2,7 @@
 class ossec::client(
   $ossec_active_response   = true,
   $ossec_server_ip,
-  $ossec_emailnotification = "yes",
+  $ossec_emailnotification = 'yes',
   $selinux = false,
 ) {
   include ossec::common
@@ -74,10 +74,10 @@ class ossec::client(
       agent_ip_address => $::ipaddress
     }
   } else {
-    exec { "agent-auth":
-      command   	=> "/var/ossec/bin/agent-auth -m $ossec_server_ip -A $::fqdn -D /var/ossec/",
-      creates   	=> "/var/ossec/etc/client.keys",
-      require   	=> Package[$ossec::common::hidsagentpackage]
+    exec { 'agent-auth':
+      command => "/var/ossec/bin/agent-auth -m ${ossec_server_ip} -A ${::fqdn} -D /var/ossec/",
+      creates => '/var/ossec/etc/client.keys',
+      require => Package[$ossec::common::hidsagentpackage]
     }
   }
 
@@ -90,7 +90,6 @@ class ossec::client(
     group   => 'ossec',
     mode    => '0755',
   }
-
 
   # SELinux
   if ($::osfamily == 'RedHat' and $selinux == true) {
