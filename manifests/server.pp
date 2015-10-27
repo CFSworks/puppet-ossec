@@ -28,18 +28,12 @@ class ossec::server (
           case $::operatingsystemmajrelease {
             '7' : {
               package { 'mariadb': ensure => present }
-              package { 'ossec-hids':
-                ensure   => installed,
-              }
               package { $ossec::common::hidsserverpackage:
                 ensure  => installed,
                 require => Package['mariadb'],
               }
             }
             default: {
-              package { 'ossec-hids':
-                ensure   => installed,
-              }
               package { $ossec::common::hidsserverpackage:
                 ensure  => installed,
                 require => Class['mysql::client'],
@@ -48,13 +42,6 @@ class ossec::server (
           }
         }
         'RedHat' : {
-          package { $ossec::common::hidsserverpackage:
-            ensure  => installed,
-            require => Class['mysql::client'],
-          }
-          package { 'ossec-hids':
-            ensure   => installed,
-          }
           package { $ossec::common::hidsserverpackage:
             ensure  => installed,
             require => Class['mysql::client'],

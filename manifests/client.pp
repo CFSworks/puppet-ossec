@@ -15,13 +15,9 @@ class ossec::client(
       }
     }
     'RedHat' : {
-      package { 'ossec-hids':
-        ensure  => installed,
-        require => Yumrepo['wazuh'],
-      }
       package { $ossec::common::hidsagentpackage:
         ensure  => installed,
-        require => Package['ossec-hids'],
+        require => Yumrepo['wazuh'],
       }
     }
     default: { fail('OS family not supported') }
