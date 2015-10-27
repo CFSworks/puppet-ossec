@@ -53,10 +53,14 @@ class ossec::common {
       }
     }
     'Redhat' : {
-      # Set up OSSEC repo
+      # Remove any leftovers from Atomic repo
       yumrepo { 'ossec':
         ensure => absent,
       }
+      package { 'ossec*art':
+        ensure => absent,
+      }
+
       yumrepo { 'wazuh':
         descr    => 'WAZUH OSSEC Repository - www.wazuh.com',
         baseurl  => 'http://ossec.wazuh.com/el/$releasever/$basearch',
