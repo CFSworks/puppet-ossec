@@ -98,7 +98,7 @@ class ossec::client(
   # Fix up the logrotate file with sensible defaults
     file { '/etc/logrotate.d/ossec-hids':
     ensure  => file,
-    source => 'puppet:///modules/ossec/ossec-hids',
+    source  => 'puppet:///modules/ossec/ossec-hids',
     require => Package[$ossec::common::hidsagentpackage],
     owner   => 'root',
     group   => 'root',
