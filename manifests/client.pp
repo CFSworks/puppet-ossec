@@ -59,30 +59,10 @@ class ossec::client(
     notify  => Service[$ossec::common::hidsagentservice]
   }
 
-  if $::uniqueid {
-    concat { '/var/ossec/etc/client.keys':
-      owner   => 'root',
-      group   => 'ossec',
-      mode    => '0640',
-      notify  => Service[$ossec::common::hidsagentservice],
-      require => Package[$ossec::common::hidsagentpackage]
-    }
-    ossec::agentkey{ "ossec_agent_${::fqdn}_client":
-      agent_id         => $::uniqueid,
-      agent_name       => $::fqdn,
-      agent_ip_address => $client_ip,
-    }
-    @@ossec::agentkey{ "ossec_agent_${::fqdn}_server":
-      agent_id         => $::uniqueid,
-      agent_name       => $::fqdn,
-      agent_ip_address => $client_ip
-    }
-  } else {
-    exec { 'agent-auth':
-      command => "/var/ossec/bin/agent-auth -m ${ossec_server_ip} -A ${::fqdn} -D /var/ossec/",
-      creates => '/var/ossec/etc/client.keys',
-      require => Package[$ossec::common::hidsagentpackage]
-    }
+  exec { 'agent-auth':
+    command => "/var/ossec/bin/agent-auth -m ${ossec_server_ip} -A ${::fqdn} -D /var/ossec/",
+    creates => '/var/ossec/etc/client.keys',
+    require => Package[$ossec::common::hidsagentpackage]
   }
 
   # Set log permissions properly to fix
