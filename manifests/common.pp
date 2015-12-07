@@ -40,7 +40,7 @@ class ossec::common {
             repos       => 'main',
             include_src => false,
             include_deb => true,
-            key         => '9A1B1C65',
+            key         => '9FE55537D1713CA519DFB85114B9C8DB9A1B1C65',
             key_source  => 'http://ossec.alienvault.com/repos/apt/conf/ossec-key.gpg.key',
           }
           ~>
